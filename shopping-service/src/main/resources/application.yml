@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: shopping-service
+  main:
+    allow-bean-definition-overriding: true
+server:
+  port: 8090
+

@@ -1,0 +1,42 @@
+spring:
+  cloud:
+    kubernetes:
+      enabled: true
+      reload:
+        enabled: true
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared-kubernetes
+  profiles:
+    active: native
+eureka:
+  client:
+    enabled: false
+
+server:
+  port: 8888
+
+# Configure Chaos Monkey - enabled = false
+chaos:
+  monkey:
+    #    enabled: false
+    watcher:
+      restController: true
+      service: false
+    assaults:
+      latency-active: true
+
+# Spring Boot Actuator Endpoint Chaos Monkey for Spring Boot
+management:
+  endpoint:
+    chaosmonkey:
+      enabled: false
+    restart:
+      enabled: true
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
